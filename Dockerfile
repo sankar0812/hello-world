@@ -1,7 +1,9 @@
-From tomcat:9-jre9
+FROM centos:7
 
-# Maintainer
-MAINTAINER "sankar0812"
+RUN /bin/bash yum install httpd -y
 
-# copy war file on to container
-COPY ./webapp.war /usr/local/tomcat/webapps
+COPY index.html /var/www/html/index.html
+
+EXPOSE 80
+
+CMD apachectl -D FOREGROUND
